@@ -1,0 +1,49 @@
+/* style.css - Paleta e ajustes visuais personalizados */
+
+body {
+    background-color: #7a7a7a;
+    color: #ffffff;
+}
+
+/* Título centralizado */
+h1, h2, h3 {
+    color: #050505;
+}
+
+/* Cartões */
+.ui.card {
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botões personalizados */
+.ui.button.add {
+    background-color: #2185d0 !important;
+    color: white !important;
+}
+
+.ui.button.edit {
+    background-color: #f2711c !important;
+    color: white !important;
+}
+
+.ui.button.complete {
+    background-color: #21ba45 !important;
+    color: white !important;
+}
+
+.ui.button.delete {
+    background-color: #db2828 !important;
+    color: white !important;
+}
+
+/* Labels de status */
+.label-completa {
+    background-color: #a3d9a5 !important;
+    color: #145a18 !important;
+}
+
+.label-incompleta {
+    background-color: #b10000 !important;
+    color: #ffffff !important;
+}

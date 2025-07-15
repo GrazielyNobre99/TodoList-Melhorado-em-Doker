@@ -1,47 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <title>Todo App DevOps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-    <div style="margin-top: 50px;" class="ui container">
+    <div class="ui container" style="margin-top: 50px;">
         <h1 class="ui center aligned header">Aplicação Todo List App</h1>
-        <h1 class="ui center aligned header">Disponibilizada pelo Prof.João Marcelo e Alterada Pela Equipe</h1>
+        <h3 class="ui center aligned header">Versão personalizada para Trabalho de DevOps</h3>
 
+        <!-- FILTROS -->
+        <div class="ui buttons" style="margin-bottom: 20px;">
+            <a href="/?filter=all" class="ui button {{ 'blue' if filter_type == 'all' else '' }}">Todas</a>
+            <a href="/?filter=incomplete" class="ui button {{ 'blue' if filter_type == 'incomplete' else '' }}">Somente Incompletas</a>
+        </div>
 
-        <form
-         class="ui form" action="/add" method="post">
+        <!-- FORMULÁRIO DE ADIÇÃO -->
+        <form class="ui form" action="/add" method="post">
             <div class="field">
-                <label>Titulo da Tarefa</label>
-                <input type="text" name="title" placeholder="Adicionar Tarefa..."><br>
+                <label>Título da Tarefa</label>
+                <input type="text" name="title" placeholder="Digite o título da tarefa..." required>
             </div>
-            <button class="ui blue button" type="submit">Adicionar</button>
+            <div class="field">
+                <label>Data e Hora da Tarefa</label>
+                <input type="datetime-local" name="date_time">
+            </div>
+            <div class="field">
+                <label>Observações</label>
+                <textarea name="notes" rows="2" placeholder="Detalhes adicionais da tarefa..."></textarea>
+            </div>
+            <button class="ui button add" type="submit">Adicionar Tarefa</button>
         </form>
 
         <hr>
 
-        {% for todo in todo_list %}
-        <div class="ui segment">
-            <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
-
-            {% if todo.complete == False %}
-            <span class="ui gray label">Incompleta</span>
-            {% else %}
-            <span class="ui green label">Completa</span>
-            {% endif %}
-
-            <a class="ui blue button" href="/update/{{ todo.id }}">Atualizar</a>
-            <a class="ui red button" href="/delete/{{ todo.id }}">Deletar</a>
+        <!-- LISTA DE TAREFAS -->
+        <div class="ui cards">
+            {% for todo in todo_list %}
+            <div class="ui raised card" style="width: 100%;">
+                <div class="content">
+                    <div class="header">{{ todo.title }}</div>
+                    <div class="meta">Criado para: {{ todo.date_time.strftime('%d/%m/%Y %H:%M') }}</div>
+                    <div class="description">
+                        <strong>Observações:</strong><br>
+                        {{ todo.notes or "Sem observações" }}
+                    </div>
+                </div>
+                <div class="extra content">
+                    {% if todo.complete %}
+                    <span class="ui label label-completa">Completa</span>
+                    {% else %}
+                    <span class="ui label label-incompleta">Incompleta</span>
+                    {% endif %}
+                    <div class="ui right floated buttons">
+                        <a class="ui button edit" href="/edit/{{ todo.id }}">Editar</a>
+                        <a class="ui button complete" href="/update/{{ todo.id }}">Atualizar</a>
+                        <a class="ui button delete" href="/delete/{{ todo.id }}">Deletar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+
+        <footer class="ui center aligned container" style="margin-top: 50px;">
+            <p>Trabalho Acadêmico TARC - DevOps 2025 - Graziely Nobre e Jarbas Santos</p>
+        </footer>
     </div>
 </body>
-
 </html>

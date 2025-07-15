@@ -1,4 +1,4 @@
-# Todo List Flask, Docker e SQLite
+# Todo List Flask, SQLite e Docker
 
 Este projeto é uma aplicação web de lista de tarefas desenvolvida com **Python + Flask**, utilizando **SQLite** como banco de dados embutido e containerizada com **Docker**.
 
@@ -7,6 +7,7 @@ Este projeto é uma aplicação web de lista de tarefas desenvolvida com **Pytho
 ## Objetivos do Projeto
 
 - Demonstrar o uso prático de Docker com Flask.
+- Usar Dockerfile e Docker-compose otimizando o processo de deploy.
 - Persistir dados com SQLite utilizando volumes Docker.
 - Rodar localmente ou em nuvem (ex: AWS EC2 - **Instruções ao Final**).
 - Manter a aplicação simples, funcional e didática.
@@ -21,6 +22,11 @@ Este projeto é uma aplicação web de lista de tarefas desenvolvida com **Pytho
  - requirements.txt
  - templates/
  - base.html
+ - static/
+ - style.css
+
+---
+
 
 
 ### Arquivos principais
@@ -29,7 +35,9 @@ Este projeto é uma aplicação web de lista de tarefas desenvolvida com **Pytho
 - `Dockerfile`: Arquivo de Configuração - Define a imagem da aplicação com Python e dependências.
 - `docker-compose.yml`: Orquestra o container e o volume persistente.
 - `requirements.txt`: Lista as bibliotecas utilizadas que serão usadas como dependências.
-- `templates/base.html`: Layout da interface da aplicação.
+- `templates/base.html`: Layout principal da interface da aplicação.
+- `templates/edit.html`: Layout de edição de tarefas da interface da aplicação.
+- `static/style.css`: Arquivo com Paleta e ajustes visuais personalizados.
 
 ---
 
@@ -45,8 +53,8 @@ Este projeto é uma aplicação web de lista de tarefas desenvolvida com **Pytho
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/GrazielyNobre99/Aplicacao-Todo-List-App-com-Docker.git
-   cd Aplicacao-Todo-List-App-com-Docker
+   git clone https://github.com/GrazielyNobre99/TodoList-Melhorado-em-Doker.git
+   cd TodoList-Melhorado-em-Doker
 
 2. Construa e Execute a Aplicação:
 
@@ -70,7 +78,7 @@ Se estiver usando Linux, use **sudo** antes dos comandos:
     docker compose down
     docker compose up
 
-down vai encerrar, e up vai iniciar. 
+**down** vai encerrar o ambiente Docker, e **up** vai iniciar novamente o ambiente. 
 
 6. Verifique se as Tarefas inseridas persistem na Aplicação.
 
@@ -84,7 +92,9 @@ Execute o Passo 1 do Inicio do Projeto para Clonar o Repositório..
 - Porta 5000
 - 0.0.0.0/0
 
+A porta 5000 é a porta padrão do Flask.
 Salve a nova regra de entrada.
+
 
 2. Em seguida no terminal da VM use os seguintes comandos:
     
@@ -102,4 +112,5 @@ http://IP-PUBLICO-DA-SUA-VM:5000
 
 ### Autores
 
-Projeto adaptado e dockerizado por Antonia Graziely Nobre Moreira e Francisco Jarbas dos Santos Sousa com base no código do Prof.João Marcelo - joaomarceloalencar/devops.
+Projeto adaptado e dockerizado por Antonia Graziely Nobre Moreira e Francisco Jarbas dos Santos Sousa com base no código do Prof.João Marcelo da UFC - Campus Quixadá
+Tutorial original: https://github.com/joaomarceloalencar/devops/tree/main/Laboratorios/01_Flask

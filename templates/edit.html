@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tarefa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body>
+    <div class="ui container" style="margin-top: 50px;">
+        <h2 class="ui header">Editar Tarefa</h2>
+
+        <form class="ui form" method="POST">
+            <div class="field">
+                <label>Título</label>
+                <input type="text" name="title" value="{{ todo.title }}" required>
+            </div>
+
+            <div class="field">
+                <label>Data e Hora</label>
+                <input type="datetime-local" name="date_time" value="{{ todo.date_time.strftime('%Y-%m-%dT%H:%M') }}">
+            </div>
+
+            <div class="field">
+                <label>Observações</label>
+                <textarea name="notes">{{ todo.notes }}</textarea>
+            </div>
+
+            <button class="ui green button" type="submit">Salvar</button>
+            <a href="{{ url_for('home') }}" class="ui button">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
