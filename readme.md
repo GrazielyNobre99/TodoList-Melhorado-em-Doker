@@ -89,10 +89,9 @@ Execute o Passo 1 do Inicio do Projeto para Clonar o Repositório..
 1. Nas Regras de Entrada da VM crie uma Regra de Entrada para:
 
 - TCP Personalizado
-- Porta 5000
+- Porta 5000 *porta padrão do Flask.*
 - 0.0.0.0/0
 
-A porta 5000 é a porta padrão do Flask.
 Salve a nova regra de entrada.
 
 
