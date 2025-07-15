@@ -111,5 +111,5 @@ http://IP-PUBLICO-DA-SUA-VM:5000
 
 ### Autores
 
-Projeto adaptado e dockerizado por Antonia Graziely Nobre Moreira e Francisco Jarbas dos Santos Sousa com base no código do Prof.João Marcelo da UFC - Campus Quixadá
+Projeto adaptado e dockerizado por Antonia Graziely Nobre Moreira e Francisco Jarbas dos Santos Sousa com base no código do Prof.João Marcelo da UFC - Campus Quixadá.
 Tutorial original: https://github.com/joaomarceloalencar/devops/tree/main/Laboratorios/01_Flask
